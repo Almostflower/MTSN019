@@ -30,7 +30,7 @@ public class CharaMove : BaseMonoBehaviour
     {
         if (characterController.isGrounded)
         {
-            if(Jump)
+            if (Jump)
             {
                 JumpCount += Time.deltaTime;
             }
@@ -56,7 +56,7 @@ public class CharaMove : BaseMonoBehaviour
             //Debug.Log(velocity.magnitude);
 
             //止まってる時、動いてる時でifを制御している、　アニメーションで（止まる、歩く、走る）があるが、Moveの数値によって切り替えるように設定している。
-            if(velocity.x == 0 && velocity.z == 0)
+            if (velocity.x == 0 && velocity.z == 0)
             {
                 animator.SetFloat("Move", 0f);
             }
@@ -67,13 +67,13 @@ public class CharaMove : BaseMonoBehaviour
             }
         }
         //ジャンプ中に制限した時間だけ移動できるように制御
-        if(JumpCount < 0.7f)
+        if (JumpCount < 0.7f)
         {
             velocity.y += Physics.gravity.y * Time.deltaTime;
             characterController.Move(velocity * walkSpeed * Time.deltaTime);
         }
         //ジャンプアニメーションで着地した時に移動できないように設定。
-        else if(JumpCount > 1.2f)
+        else if (JumpCount > 1.2f)
         {
             Jump = false;
         }

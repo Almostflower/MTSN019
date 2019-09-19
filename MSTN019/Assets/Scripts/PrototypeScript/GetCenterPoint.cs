@@ -39,6 +39,7 @@ public class GetCenterPoint : MonoBehaviour
         }
         distance = (radius + margin) / Mathf.Sin(usingCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);   //カメラの距離を算出
         cameraPos.localPosition = new Vector3(0, Mathf.MoveTowards(cameraPos.transform.position.y, cameraHeight, 1.0f * Time.deltaTime), -distance);  //CameraPositionをカメラの距離をもとに配置
+        cameraPos.position = new Vector3(cameraPos.position.x, 0.0f, cameraPos.position.z);
         cameraPos.LookAt(this.transform);           //CameraPositionを中心の方向に向かせる
 
         timer += Time.deltaTime;
